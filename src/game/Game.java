@@ -2,6 +2,8 @@ package game;
 
 import java.util.Scanner;
 import character.Mage;
+import character.Warrior;
+import character.Archer;
 import character.Hero;
 
 public class Game {
@@ -33,20 +35,32 @@ public class Game {
 
             switch (choice) {
                 case 1:
-                    Mage jogadorHeroi = new Mage(nomeJogador);
+                    Mage mage = new Mage(nomeJogador);
                     System.out.println("Parabéns " + nomeJogador + ", você escolheu a classe Mago para o seu Herói. " +
                             "\nOs atributos iniciais são:\n" +
-                            "Vida: " + jogadorHeroi.getMaxHealth() +
-                            ", Ataque: " + jogadorHeroi.getAttackPower() +
-                            ", Defesa: " + jogadorHeroi.getDefensePower() +
-                            ", Mana: " + jogadorHeroi.getMana());
-                    return jogadorHeroi;
+                            "Vida: " + mage.getMaxHealth() +
+                            ", Ataque: " + mage.getAttackPower() +
+                            ", Defesa: " + mage.getDefensePower() +
+                            ", Mana: " + mage.getMana());
+                    return mage;
                 case 2:
-                    System.out.println("Guerreiro ainda não implementado.");
-                    break;
+                    Warrior warrior = new Warrior(nomeJogador);
+                    System.out.println("Parabéns " + nomeJogador + ", você escolheu a classe Guerreiro para o seu Herói. " +
+                            "\nOs atributos iniciais são:\n" +
+                            "Vida: " + warrior.getMaxHealth() +
+                            ", Ataque: " + warrior.getAttackPower() +
+                            ", Defesa: " + warrior.getDefensePower() +
+                            ", Mana: " + warrior.getMana());
+                    return warrior;
                 case 3:
-                    System.out.println("Arqueiro ainda não implementado.");
-                    break;
+                    Archer archer = new Archer(nomeJogador);
+                    System.out.println("Parabéns " + nomeJogador + ", você escolheu a classe Arqueiro para o seu Herói. " +
+                            "\nOs atributos iniciais são:\n" +
+                            "Vida: " + archer.getMaxHealth() +
+                            ", Ataque: " + archer.getAttackPower() +
+                            ", Defesa: " + archer.getDefensePower() +
+                            ", Mana: " + archer.getMana());
+                    return archer;
                 default:
                     System.out.println("Escolha inválida. Tente novamente.");
             }
