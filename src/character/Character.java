@@ -2,17 +2,16 @@ package character;
 
 public abstract class Character {
     protected String name;
-    protected int health;
-    protected int maxHealth;
+    protected int health , maxHealth;
     protected int attackPower;
     protected int defensePower;
 
-    public Character(String name) {
+    public Character(String name, int maxHealth, int attackPower, int defensePower) {
         this.name = name;
-        this.maxHealth = 100; // Default max health
+        this.maxHealth = maxHealth; // Default max health
         this.health = maxHealth; // Initialize health to maxHealth
-        this.attackPower = 10; // Default attack power
-        this.defensePower = 5; // Default defense power
+        this.attackPower = attackPower; // Default attack power
+        this.defensePower = defensePower; // Default defense power
     }
 
     // Getters and Setters
