@@ -43,4 +43,7 @@ public abstract class Hero extends Character {
     public void setExperience(int experience) {
         this.experience = experience;
     }
+    public void setExpToNextLevel(int expToNextLevel) {
+        this.expToNextLevel = expToNextLevel;
+    }
 }
