@@ -1,22 +1,33 @@
-
 package character;
+
 public class Mage extends Hero {
 
     public Mage(String name) {
-        super(name, 80, 8, 3, 100, "Mago"); // vida, ataque, defesa, mana, classe
+        super(name, 1, 80, 8, 4, 100, "Mago"); // vida, ataque, defesa, mana, classe
 
     }
 
-    /*@Override
-    public int useSkill() {
-        if (mana >= 20) {
-            mana -= 20;
-            int damage = attack + 25;
-            System.out.println(name + " lançou uma bola de fogo! Dano: " + damage);
-            return damage;
-        } else {
-            System.out.println(name + " está sem mana!");
-            return 0;
+    @Override
+    public void subirNivel() {
+        while (this.getExperience() >= this.getExpToNextLevel()) {
+            this.setExperience(this.getExperience() - this.getExpToNextLevel());
+            this.setLevel(this.getLevel() + 1);
+            this.setExpToNextLevel((int) Math.ceil(this.getExpToNextLevel() * 1.5));
+
+            // Guerreiro ganha mais vida e ataque
+            this.setMaxHealth(this.getMaxHealth() + 15);
+            this.setAttackPower(this.getAttackPower() + 4);
+            this.setDefensePower(this.getDefensePower() + 3);
+            this.setMana(this.getMana() + 2);
+
+            this.setHealth(this.getMaxHealth());
+            System.out.println("Parabéns! " + this.getName() + " subiu para o nível " + this.getLevel() + "!");
+            System.out.println("Atributos de Guerreiro aumentados e vida totalmente recuperada!");
+            System.out.println("Esses são seus atributos atuais: " +
+                    "\nVida: " + this.getMaxHealth() +
+                    ", Ataque: " + this.getAttackPower() +
+                    ", Defesa: " + this.getDefensePower() +
+                    ", Mana: " + this.getMana());
         }
-    }*/
+    }
 }
