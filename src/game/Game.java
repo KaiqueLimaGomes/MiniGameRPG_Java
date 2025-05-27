@@ -56,7 +56,18 @@ public class Game {
         System.out.println("Vamos iniciar sua aventura Grande " + player.getHeroClass() + " " + player.getName() + "!");
         System.out.println("Você está pronto para enfrentar os desafios que virão pela frente.");
 
-        menuExploracao(player);
+        // Loop principal do jogo
+        while (true) {
+            menuExploracao(player);
+
+            // Após voltar da exploração, pergunte se deseja explorar novamente ou sair
+            System.out.println("\nDeseja explorar novamente? (s/n)");
+            String resposta = scanner.nextLine().trim().toLowerCase();
+            if (!resposta.equals("s")) {
+                System.out.println("Obrigado por jogar!");
+                break;
+            }
+        }
     }
 
     // Metodo para entrar com nome do jogador e escolher o personagem
@@ -111,7 +122,7 @@ public class Game {
     }
 
     // Função de batalha entre herói e monstro
-    public void batalha(character.Character heroi, character.Character monstro) {
+    public boolean batalha(character.Character heroi, character.Character monstro) {
         System.out.println("\n********** BATALHA **********");
         System.out.println("Entre " + heroi.getName() + " (Nível " + heroi.getLevel() + ") e " +
                 monstro.getName() + " (Nível " + monstro.getLevel() + ")");
@@ -149,6 +160,7 @@ public class Game {
         }
 
         if (heroi.getHealth() > 0) {
+            // Vitória
             System.out.println("\n***** " + heroi.getName().toUpperCase() + " VENCEU A BATALHA! *****\n");
             int xpGanho = monstro.getLevel() * 2;
             if (heroi instanceof Hero) {
@@ -156,8 +168,10 @@ public class Game {
                 ((Hero) heroi).subirNivel();
                 System.out.println(">>> " + heroi.getName() + " ganhou " + xpGanho + " de experiência!\n");
                 salvarHeroi((Hero) heroi);
+                return false; // Herói não morreu
             }
         } else {
+            // Derrota
             System.out.println(monstro.getName() + " venceu a batalha!");
 
             if (heroi instanceof Hero) {
@@ -171,8 +185,12 @@ public class Game {
                     heroObj.penalidadeMorte(90, 9, 4, 70);
                 }
                 salvarHeroi(heroObj);
+                return true; // Herói morreu
             }
+            // Interrompe imediatamente a batalha e retorna ao menu de exploração
         }
+        // Caso nenhuma das condições acima seja satisfeita, retorna false por padrão
+        return false;
     }
 
     public void menuExploracao(Hero player) {
@@ -210,10 +228,10 @@ public class Game {
                         " (Nível " + monstro.getLevel() + ", Vida: " + monstro.getHealth() +
                         ", Ataque: " + monstro.getAttackPower() + ", Defesa: " + monstro.getDefensePower() + ")");
                 System.out.println("----------------------------------------\n");
-                batalha(player, monstro); // Chama a batalha para cada evento
+                boolean morreu = batalha(player, monstro); // Chama a batalha para cada evento
 
                 // Se o herói morreu, encerra a exploração e volta ao menu de áreas
-                if (player.getHealth() <= 0) {
+                if (morreu) {
                     System.out.println("Seu herói foi derrotado! Voltando ao menu de exploração...");
                     return; // Sai do método, voltando ao menu principal ou ao fluxo anterior
                 }
