@@ -203,44 +203,64 @@ public class Game {
 
         while (true) {
             System.out.println("\n=== Menu de Exploração ===");
-            System.out.println("Escolha o nível da área para explorar (1 a 5) ou 0 para sair:");
-            int nivelArea = scanner.nextInt();
+            System.out.println("1. Explorar uma área");
+            System.out.println("2. Ver status do herói");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            int opcao = scanner.nextInt();
             scanner.nextLine(); // Consumir nova linha
 
-            if (nivelArea == 0) {
+            if (opcao == 0) {
                 System.out.println("Saindo da exploração...");
                 break;
             }
-            if (nivelArea < 1 || nivelArea > 5) {
-                System.out.println("Nível inválido! Escolha entre 1 e 5.");
+            if (opcao == 2) {
+                System.out.println("\n===== STATUS DO HERÓI =====");
+                System.out.println("Nome: " + player.getName());
+                System.out.println("Classe: " + player.getHeroClass());
+                System.out.println("Nível: " + player.getLevel());
+                System.out.println("Experiência: " + player.getExperience() + "/" + player.getExpToNextLevel());
+                System.out.println("Vida: " + player.getHealth() + "/" + player.getMaxHealth());
+                System.out.println("Ataque: " + player.getAttackPower());
+                System.out.println("Defesa: " + player.getDefensePower());
+                System.out.println("Mana: " + player.getMana());
+                System.out.println("===========================\n");
                 continue;
             }
+            if (opcao == 1) {
+                System.out.println("Escolha o nível da área para explorar (1 a 5):");
+                int nivelArea = scanner.nextInt();
+                scanner.nextLine(); // Consumir nova linha
 
-            Random rand = new Random();
-            int eventos = 1 + rand.nextInt(5); // Sorteia entre 1 e 5 eventos
-
-            System.out.println("Você irá enfrentar " + eventos + " evento(s) nesta área!");
-
-            for (int i = 1; i <= eventos; i++) {
-                Monster monstro = Monster.gerarMonstroAleatorio(nivelArea);
-                System.out.println("\n----------------------------------------");
-                System.out.println("Evento " + i + ": Apareceu um " + monstro.getName().toUpperCase() +
-                        " (Nível " + monstro.getLevel() + ", Vida: " + monstro.getHealth() +
-                        ", Ataque: " + monstro.getAttackPower() + ", Defesa: " + monstro.getDefensePower() + ")");
-                System.out.println("----------------------------------------\n");
-                boolean morreu = batalha(player, monstro); // Chama a batalha para cada evento
-
-                // Se o herói morreu, encerra a exploração e volta ao menu de áreas
-                if (morreu) {
-                    System.out.println("Seu herói foi derrotado! Voltando ao menu de exploração...");
-                    return; // Sai do método, voltando ao menu principal ou ao fluxo anterior
+                if (nivelArea < 1 || nivelArea > 5) {
+                    System.out.println("Nível inválido! Escolha entre 1 e 5.");
+                    continue;
                 }
-            }
 
-            // Após sobreviver a todos os eventos, recarrega a vida
-            player.setHealth(player.getMaxHealth());
-            System.out.println("\n*** Parabéns! Você sobreviveu a todos os eventos desta área. ***");
-            System.out.println("Sua vida foi totalmente restaurada!\n");
+                Random rand = new Random();
+                int eventos = 1 + rand.nextInt(5); // Sorteia entre 1 e 5 eventos
+
+                System.out.println("Você irá enfrentar " + eventos + " evento(s) nesta área!");
+
+                for (int i = 1; i <= eventos; i++) {
+                    Monster monstro = Monster.gerarMonstroAleatorio(nivelArea);
+                    System.out.println("\n----------------------------------------");
+                    System.out.println("Evento " + i + ": Apareceu um " + monstro.getName().toUpperCase() +
+                            " (Nível " + monstro.getLevel() + ", Vida: " + monstro.getHealth() +
+                            ", Ataque: " + monstro.getAttackPower() + ", Defesa: " + monstro.getDefensePower() + ")");
+                    System.out.println("----------------------------------------\n");
+                    boolean morreu = batalha(player, monstro);
+
+                    if (morreu) {
+                        System.out.println("Seu herói foi derrotado! Voltando ao menu de exploração...");
+                        return;
+                    }
+                }
+
+                player.setHealth(player.getMaxHealth());
+                System.out.println("\n*** Parabéns! Você sobreviveu a todos os eventos desta área. ***");
+                System.out.println("Sua vida foi totalmente restaurada!\n");
+            }
         }
     }
 }

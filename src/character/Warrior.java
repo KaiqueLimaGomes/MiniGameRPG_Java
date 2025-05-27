@@ -20,7 +20,7 @@ public class Warrior extends Hero {
 
             this.setHealth(this.getMaxHealth());
             System.out.println("Parabéns! " + this.getName() + " subiu para o nível " + this.getLevel() + "!");
-            System.out.println("Atributos de Guerreiro aumentados e vida totalmente recuperada!");
+            System.out.println("Os Atributos do Herói foram aumentados e vida totalmente recuperada!");
             System.out.println("Esses são seus atributos atuais: " +
                     "\nVida: " + this.getMaxHealth() +
                     ", Ataque: " + this.getAttackPower() +

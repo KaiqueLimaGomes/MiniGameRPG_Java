@@ -83,7 +83,7 @@ public abstract class Hero extends Character {
         while (this.experience >= this.expToNextLevel) {
             this.experience -= this.expToNextLevel;
             this.level++;
-            this.expToNextLevel = (int)(this.expToNextLevel * 1.5);
+            this.expToNextLevel = (int) (this.expToNextLevel * 1.5);
 
             // Valores genéricos, podem ser sobrescritos nas subclasses
             this.maxHealth += 5;
@@ -101,15 +101,18 @@ public abstract class Hero extends Character {
         if (this.level > 1) {
             this.level--;
             System.out.println("\n*** Você perdeu 1 nível! Novo nível: " + this.level + " ***");
+            System.out.println("Você perdeu atributos devido à morte");
+
+            // Reduz atributos, mas nunca abaixo do valor base/original
+            this.maxHealth = Math.max(this.maxHealth - 2, vidaBase);
+            this.attackPower = Math.max(this.attackPower - 2, ataqueBase);
+            this.defensePower = Math.max(this.defensePower - 2, defesaBase);
+            this.mana = Math.max(this.mana - 2, manaBase);
+
         } else {
             System.out.println("\n*** Você já está no nível mínimo (1)! ***");
+            System.out.println("Seus atributos não podem ficar abaixo dos valores iniciais.");
         }
-
-        // Reduz atributos, mas nunca abaixo do valor base/original
-        this.maxHealth = Math.max(this.maxHealth - 10, vidaBase);
-        this.attackPower = Math.max(this.attackPower - 2, ataqueBase);
-        this.defensePower = Math.max(this.defensePower - 2, defesaBase);
-        this.mana = Math.max(this.mana - 5, manaBase);
 
         // Zera experiência acumulada
         this.experience = 0;
@@ -117,12 +120,12 @@ public abstract class Hero extends Character {
         // Recupera vida para o novo máximo
         this.health = this.maxHealth;
 
-        System.out.println("Você perdeu atributos devido à morte, mas não pode ficar abaixo dos valores iniciais.");
+    
         System.out.println("Seus atributos atuais:");
         System.out.println("Vida: " + this.maxHealth +
-                           ", Ataque: " + this.attackPower +
-                           ", Defesa: " + this.defensePower +
-                           ", Mana: " + this.mana);
+                ", Ataque: " + this.attackPower +
+                ", Defesa: " + this.defensePower +
+                ", Mana: " + this.mana);
     }
 
 }
