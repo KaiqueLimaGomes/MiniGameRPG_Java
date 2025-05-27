@@ -17,15 +17,15 @@ public class Monster extends Character {
         switch (nivelArea) {
             case 1:
                 nomes = new String[]{"Slime", "Lobo", "Goblin", "Rato Gigante"};
-                minLevel = 1; maxLevel = 20;
+                minLevel = 1; maxLevel = 10;
                 break;
             case 2:
                 nomes = new String[]{"Goblin", "Esqueleto", "Bandido", "Morcego"};
-                minLevel = 21; maxLevel = 40;
+                minLevel = 11; maxLevel = 30;
                 break;
             case 3:
                 nomes = new String[]{"Orc", "Zumbi", "Bandido", "Esqueleto"};
-                minLevel = 41; maxLevel = 60;
+                minLevel = 31; maxLevel = 60;
                 break;
             case 4:
                 nomes = new String[]{"Orc", "Troll", "Bandido", "Minotauro"};

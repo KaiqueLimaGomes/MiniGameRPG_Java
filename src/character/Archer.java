@@ -3,7 +3,7 @@ package character;
 public class Archer extends Hero {
 
     public Archer(String name) {
-        super(name, 1, 90, 10, 2, 80, "Arqueiro"); // vida, ataque, defesa, mana, classe
+        super(name, 1, 90, 10, 7, 80, "Arqueiro"); // vida, ataque, defesa, mana, classe
     }
 
     @Override
@@ -14,9 +14,9 @@ public class Archer extends Hero {
             this.setExpToNextLevel((int) Math.ceil(this.getExpToNextLevel() * 1.5));
 
             // Guerreiro ganha mais vida e ataque
-            this.setMaxHealth(this.getMaxHealth() + 15);
-            this.setAttackPower(this.getAttackPower() + 4);
-            this.setDefensePower(this.getDefensePower() + 3);
+            this.setMaxHealth(this.getMaxHealth() + 2);
+            this.setAttackPower(this.getAttackPower() + 2);
+            this.setDefensePower(this.getDefensePower() + 2);
             this.setMana(this.getMana() + 2);
 
             this.setHealth(this.getMaxHealth());

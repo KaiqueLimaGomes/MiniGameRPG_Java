@@ -178,11 +178,11 @@ public class Game {
                 Hero heroObj = (Hero) heroi;
                 // Chame a penalidade conforme a classe do herói
                 if (heroObj instanceof Warrior) {
-                    heroObj.penalidadeMorte(120, 10, 5, 50);
+                    heroObj.penalidadeMorte(120,9, 10, 50);
                 } else if (heroObj instanceof Mage) {
-                    heroObj.penalidadeMorte(80, 7, 4, 100);
+                    heroObj.penalidadeMorte(80, 13, 5, 100);
                 } else if (heroObj instanceof Archer) {
-                    heroObj.penalidadeMorte(90, 9, 4, 70);
+                    heroObj.penalidadeMorte(90, 10, 7, 70);
                 }
                 salvarHeroi(heroObj);
                 return true; // Herói morreu
@@ -236,6 +236,11 @@ public class Game {
                     return; // Sai do método, voltando ao menu principal ou ao fluxo anterior
                 }
             }
+
+            // Após sobreviver a todos os eventos, recarrega a vida
+            player.setHealth(player.getMaxHealth());
+            System.out.println("\n*** Parabéns! Você sobreviveu a todos os eventos desta área. ***");
+            System.out.println("Sua vida foi totalmente restaurada!\n");
         }
     }
 }

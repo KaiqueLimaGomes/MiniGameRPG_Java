@@ -3,7 +3,7 @@ package character;
 public class Mage extends Hero {
 
     public Mage(String name) {
-        super(name, 1, 80, 8, 4, 100, "Mago"); // vida, ataque, defesa, mana, classe
+        super(name, 1, 80, 13, 5, 100, "Mago"); // vida, ataque, defesa, mana, classe
 
     }
 
@@ -14,11 +14,11 @@ public class Mage extends Hero {
             this.setLevel(this.getLevel() + 1);
             this.setExpToNextLevel((int) Math.ceil(this.getExpToNextLevel() * 1.5));
 
-            // Guerreiro ganha mais vida e ataque
-            this.setMaxHealth(this.getMaxHealth() + 15);
-            this.setAttackPower(this.getAttackPower() + 4);
-            this.setDefensePower(this.getDefensePower() + 3);
-            this.setMana(this.getMana() + 2);
+            // Mago ganha mais vida e ataque
+            this.setMaxHealth(this.getMaxHealth() + 1);
+            this.setAttackPower(this.getAttackPower() + 3);
+            this.setDefensePower(this.getDefensePower() + 1);
+            this.setMana(this.getMana() + 5);
 
             this.setHealth(this.getMaxHealth());
             System.out.println("Parabéns! " + this.getName() + " subiu para o nível " + this.getLevel() + "!");

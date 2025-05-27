@@ -86,9 +86,9 @@ public abstract class Hero extends Character {
             this.expToNextLevel = (int)(this.expToNextLevel * 1.5);
 
             // Valores genéricos, podem ser sobrescritos nas subclasses
-            this.maxHealth += 10;
-            this.attackPower += 2;
-            this.defensePower += 2;
+            this.maxHealth += 5;
+            this.attackPower += 1;
+            this.defensePower += 1;
             this.mana += 5;
 
             this.health = this.maxHealth;
