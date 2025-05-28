@@ -35,9 +35,9 @@ Este projeto é um mini RPG de texto desenvolvido em Java, onde o jogador assume
 
 ## Como jogar
 
-1. Baixe apenas o arquivo zip "JogarAqui", onde o projeto já está compilado. (Apenas para Windows)
+1. Baixe apenas o arquivo zip `JogarAqui.zip`, onde o projeto já está compilado. (Apenas para Windows)
 2. Extrai os arquivos em um pasta.
-3. Executa o arquivo "Iniciar_Jogo", em seguida o jogo irá abrir atráves do CMD (tela preta). 
+3. Executa o arquivo `Iniciar_Jogo.bat`, em seguida o jogo irá abrir atráves do CMD (tela preta). 
 3. Escolha sua classe, explore áreas, lute contra monstros e evolua seu personagem!
 
 ## Outros
